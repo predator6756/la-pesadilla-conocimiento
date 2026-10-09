@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOCTIS | Academia Oscura</title>
+
+<style>
+:root {
+  --fondo: #0b070d;
+  --panel: #19101f;
+  --morado: #c084fc;
+  --rojo: #9f1239;
+  --texto: #f5eafa;
+  --borde: #4c2858;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--fondo);
+  color: var(--texto);
+  font-family: Georgia, serif;
+  line-height: 1.7;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #100a14;
+  border-bottom: 1px solid var(--borde);
+  padding: 15px 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.logo {
+  color: var(--morado);
+  font-size: 26px;
+  letter-spacing: 5px;
+  font-weight: bold;
+}
+
+nav ul {
+  display: flex;
+  gap: 18px;
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: var(--morado);
+}
+
+button, .boton {
+  cursor: pointer;
+  border: 1px solid var(--morado);
+  background: var(--rojo);
+  color: white;
+  padding: 11px 19px;
+  border-radius: 4px;
+  font: inherit;
+  display: inline-block;
+  transition: .3s;
+}
+
+button:hover, .boton:hover {
+  background: #6b1232;
+  transform: translateY(-2px);
+}
+
+.hero {
+  min-height: 85vh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 60px 20px;
+  background:
+    radial-gradient(ellipse at 50% 30%,
+    #522044, #211127 45%, #0b070d 80%);
+}
+
+.simbolo {
+  color: var(--morado);
+  font-size: 65px;
+  animation: brillo 3s infinite alternate;
+}
+
+@keyframes brillo {
+  from { text-shadow: 0 0 5px #a855f7; }
+  to { text-shadow: 0 0 35px #d8b4fe; }
+}
+
+.hero h1 {
+  font-size: clamp(40px, 8vw, 75px);
+  line-height: 1.15;
+  margin: 20px 0;
+}
+
+.hero h1 span {
+  color: var(--morado);
+}
+
+.hero p {
+  max-width: 650px;
+  margin: 15px auto 25px;
+  color: #d5c3dd;
+}
+
+section {
+  padding: 75px 8%;
+  scroll-margin-top: 85px;
+}
+
+.titulo {
+  color: var(--morado);
+  text-align: center;
+  font-size: clamp(30px, 5vw, 45px);
+  margin-bottom: 12px;
+}
+
+.descripcion {
+  color: #c8b5d0;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 35px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.tarjeta {
+  background: var(--panel);
+  border: 1px solid var(--borde);
+  padding: 25px;
+  border-radius: 8px;
+  transition: .3s;
+}
+
+.tarjeta:hover {
+  transform: translateY(-6px);
+  border-color: var(--morado);
+}
+
+.tarjeta h3 {
+  color: #ddb7fa;
+  margin-bottom: 10px;
+}
+
+.tarjeta p {
+  color: #c8b5d0;
+}
+
+.icono {
+  font-size: 38px;
+  margin-bottom: 10px;
+}
+
+.oraculo {
+  max-width: 750px;
+  margin: auto;
+  text-align: center;
+  background: var(--panel);
+  border: 1px solid var(--borde);
+  padding: 35px;
+  border-radius: 8px;
+}
+
+#mensaje {
+  font-size: 22px;
+  color: var(--morado);
+  margin: 25px 0;
+  min-height: 70px;
+}
+
+.ritual {
+  text-align: center;
+  background: radial-gradient(ellipse, #35132d, var(--fondo) 70%);
+}
+
+#circulo {
+  font-size: 90px;
+  color: var(--morado);
+  display: inline-block;
+  margin: 20px;
+  transition: 1s;
+}
+
+#circulo.activo {
+  transform: rotate(180deg) scale(1.2);
+  text-shadow: 0 0 35px #f43f5e;
+}
+
+form {
+  max-width: 600px;
+  margin: auto;
+  display: grid;
+  gap: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  color: white;
+  background: #100a14;
+  border: 1px solid var(--borde);
+  border-radius: 4px;
+  font: inherit;
+}
+
+#respuesta {
+  color: var(--morado);
+  overflow-wrap: anywhere;
+}
+
+footer {
+  border-top: 1px solid var(--borde);
+  padding: 25px;
+  text-align: center;
+  color: #bdaac5;
+}
+
+body.claro {
+  --fondo: #f5edf8;
+  --panel: #fffaff;
+  --morado: #7836a1;
+  --texto: #281630;
+  --borde: #cdb4dc;
+}
+
+body.claro nav {
+  background: #eee2f3;
+}
+
+body.claro input,
+body.claro textarea {
+  background: white;
+  color: #281630;
+}
+
+body.claro .hero {
+  background: radial-gradient(ellipse, #dfc3ee, #f5edf8 75%);
+}
+
+@media (max-width: 800px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  nav {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 550px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  section {
+    padding: 55px 6%;
+  }
+  nav ul {
+    justify-content: center;
+    gap: 12px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <a href="#inicio" class="logo">☾ NOCTIS</a>
+
+  <ul>
+    <li><a href="#inicio">Inicio</a></li>
+    <li><a href="#academia">Academia</a></li>
+    <li><a href="#grimorio">Grimorio</a></li>
+    <li><a href="#oraculo">Oráculo</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+
+  <button id="tema">☼ Cambiar tema</button>
+</nav>
+
+<header class="hero" id="inicio">
+  <div>
+    <div class="simbolo">⛧</div>
+    <p>✦ CONOCIMIENTO · MISTERIO · LIBERTAD ✦</p>
+
+    <h1>BIENVENIDO A<br><span>LA OSCURIDAD</span></h1>
+
+    <p>
+      Descubre los misterios del mundo gótico, el simbolismo
+      antiguo y las leyendas que viven entre las sombras.
+    </p>
+
+    <a class="boton" href="#academia">Entrar a la academia</a>
+    <a class="boton" href="#oraculo">Consultar el oráculo</a>
+  </div>
+</header>
+
+<section id="academia">
+  <h2 class="titulo">La Academia</h2>
+  <p class="descripcion">
+    Un lugar ficticio dedicado al arte oscuro, la historia
+    y los secretos de la imaginación.
+  </p>
+
+  <div class="grid">
+    <article class="tarjeta">
+      <div class="icono">♜</div>
+      <h3>Historia gótica</h3>
+      <p>Explora castillos, arquitectura medieval y literatura oscura.</p>
+    </article>
+
+    <article class="tarjeta">
+      <div class="icono">☽</div>
+      <h3>Simbolismo lunar</h3>
+      <p>Descubre el significado de la luna y las estrellas en distintas culturas.</p>
+    </article>
+
+    <article class="tarjeta">
+      <div class="icono">⛧</div>
+      <h3>Ocultismo</h3>
+      <p>Conoce los símbolos, sus orígenes y sus interpretaciones culturales.</p>
+    </article>
+  </div>
+</section>
+
+<section id="grimorio">
+  <h2 class="titulo">El Grimorio</h2>
+  <p class="descripcion">
+    Abre los libros y descubre sus conocimientos ocultos.
+  </p>
+
+  <div class="grid">
+    <article class="tarjeta">
+      <div class="icono">📖</div>
+      <h3>Las sombras</h3>
+      <p class="dato" hidden>
+        El claroscuro utiliza contrastes de luz y oscuridad para crear dramatismo.
+      </p>
+      <button class="libro">Abrir libro</button>
+    </article>
+
+    <article class="tarjeta">
+      <div class="icono">🕯️</div>
+      <h3>Las leyendas</h3>
+      <p class="dato" hidden>
+        La literatura gótica combina misterio, escenarios sombríos y secretos.
+      </p>
+      <button class="libro">Abrir libro</button>
+    </article>
+
+    <article class="tarjeta">
+      <div class="icono">🌑</div>
+      <h3>Los símbolos</h3>
+      <p class="dato" hidden>
+        Un símbolo puede tener diferentes significados según su contexto cultural.
+      </p>
+      <button class="libro">Abrir libro</button>
+    </article>
+  </div>
+</section>
+
+<section id="oraculo">
+  <h2 class="titulo">El Oráculo</h2>
+  <p class="descripcion">
+    Presiona el botón y descubre un mensaje misterioso.
+  </p>
+
+  <div class="oraculo">
+    <div class="simbolo">✧</div>
+    <p id="mensaje">El oráculo espera tu consulta...</p>
+    <button id="consultar">Revelar mensaje</button>
+  </div>
+</section>
+
+<section class="ritual" id="ritual">
+  <h2 class="titulo">El Círculo Nocturno</h2>
+  <p class="descripcion">
+    Activa el símbolo y contempla su transformación.
+  </p>
+
+  <div id="circulo">☽</div>
+  <p id="estado">El círculo permanece en silencio.</p>
+  <br>
+  <button id="activar">Activar círculo</button>
+</section>
+
+<section id="contacto">
+  <h2 class="titulo">Contacto</h2>
+  <p class="descripcion">
+    Deja un mensaje en el libro de visitas de NOCTIS.
+  </p>
+
+  <form id="formulario">
+    <div>
+      <label for="nombre">Nombre</label>
+      <input id="nombre" name="nombre" required minlength="2"
+        maxlength="60" placeholder="Tu nombre">
+    </div>
+
+    <div>
+      <label for="correo">Correo electrónico</label>
+      <input id="correo" name="correo" type="email" required
+        placeholder="tu@correo.com">
+    </div>
+
+    <div>
+      <label for="comentario">Mensaje</label>
+      <textarea id="comentario" name="comentario" rows="5"
+        minlength="5" maxlength="1000" required
+        placeholder="Escribe aquí..."></textarea>
+    </div>
+
+    <button type="submit">Validar mensaje</button>
+    <p id="respuesta" role="status" aria-live="polite"></p>
+  </form>
+
+  <p class="descripcion" style="margin-top:20px">
+    Formulario demostrativo: no envía ni almacena datos.
+  </p>
+</section>
+
+<footer>
+  <p>⛧ NOCTIS — Academia de las Artes Oscuras ⛧</p>
+  <p>Proyecto escolar de HTML, CSS y JavaScript.</p>
+  <p>© <span id="anio"></span> Todos los derechos reservados.</p>
+  <a href="#inicio">Volver arriba ↑</a>
+</footer>
+
+<script>
+// Año automático
+document.getElementById("anio").textContent =
+  new Date().getFullYear();
+
+// Cambiar tema
+document.getElementById("tema").addEventListener("click", function() {
+  document.body.classList.toggle("claro");
+
+  this.textContent = document.body.classList.contains("claro")
+    ? "☾ Tema oscuro"
+    : "☼ Cambiar tema";
+});
+
+// Abrir y cerrar libros
+document.querySelectorAll(".libro").forEach(function(boton) {
+  boton.addEventListener("click", function() {
+    const dato = this.parentElement.querySelector(".dato");
+    dato.hidden = !dato.hidden;
+    this.textContent = dato.hidden ? "Abrir libro" : "Cerrar libro";
+  });
+});
+
+// Oráculo
+const frases = [
+  "La curiosidad abre puertas desconocidas.",
+  "Incluso la noche más larga encuentra el amanecer.",
+  "El conocimiento es la llave de los misterios.",
+  "No temas explorar nuevas ideas.",
+  "Las sombras también revelan secretos.",
+  "Tu imaginación no tiene límites.",
+  "Cada pregunta es el comienzo de una historia."
+];
+
+let anterior = -1;
+
+document.getElementById("consultar").addEventListener("click", function() {
+  let indice;
+
+  do {
+    indice = Math.floor(Math.random() * frases.length);
+  } while (indice === anterior && frases.length > 1);
+
+  anterior = indice;
+  document.getElementById("mensaje").textContent = "✧ " + frases[indice] + " ✧";
+});
+
+// Círculo animado
+document.getElementById("activar").addEventListener("click", function() {
+  const circulo = document.getElementById("circulo");
+  const activo = circulo.classList.toggle("activo");
+
+  circulo.textContent = activo ? "⛧" : "☽";
+  document.getElementById("estado").textContent = activo
+    ? "El símbolo se ha iluminado."
+    : "El círculo vuelve a descansar.";
+
+  this.textContent = activo ? "Desactivar círculo" : "Activar círculo";
+});
+
+// Formulario demostrativo
+document.getElementById("formulario").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  if (!this.checkValidity()) {
+    this.reportValidity();
+    return;
+  }
+
+  const nombre = document.getElementById("nombre").value.trim();
+
+  document.getElementById("respuesta").textContent =
+    "Gracias, " + nombre +
+    ". Tu formulario se validó correctamente, pero no se envió a ningún servidor.";
+
+  this.reset();
+});
+</script>
+
+</body>
+</html>
